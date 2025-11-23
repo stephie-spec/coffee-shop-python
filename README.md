@@ -37,10 +37,10 @@ A simple Python application of a coffee shop.
 - Connect customers to coffees with prices
 - Automatic relationship management
 
-## 📊 Example Output
+## Example Output
 
 ```
-☕ WELCOME TO THE COFFEE SHOP! ☕
+WELCOME TO THE COFFEE SHOP!
 
 CUSTOMER ORDERS:
 
@@ -64,7 +64,7 @@ Biggest latte aficionado: Mary
 ```
 
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Python 3.11+** - Core programming language
 - **Pipenv** - Dependency management
