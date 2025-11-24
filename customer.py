@@ -2,27 +2,20 @@ class Customer:
     all_customers = []
     
     def __init__(self, name):
+        if not isinstance(name, str) or not 1 <= len(name) <= 15:
+            raise Exception("Name must be string between 1-15 characters")
         self.name = name
         self.orders = []
         Customer.all_customers.append(self)
     
-    def get_orders(self):
-        return self.orders
-    
-    def get_coffees(self):
-        unique_coffees = []
-        for order in self.orders:
-            if order.coffee not in unique_coffees:
-                unique_coffees.append(order.coffee)
-        return unique_coffees
-    
     def create_order(self, coffee, price):
-        order = Order(self, coffee, price)
-        return order
+        from order import Order
+        new_order = Order(self, coffee, price)
+        return new_order
     
     @classmethod
     def most_aficionado(cls, coffee):
-        if not coffee.get_orders():
+        if not coffee.orders:
             return None
         
         best_customer = None
@@ -30,7 +23,7 @@ class Customer:
         
         for customer in cls.all_customers:
             total = 0
-            for order in customer.get_orders():
+            for order in customer.orders:
                 if order.coffee == coffee:
                     total += order.price
             
