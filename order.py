@@ -6,7 +6,6 @@ class Order:
         self.coffee = coffee
         self.price = price
         
-        # Connect to customer and coffee
-        customer._orders.append(self)
-        coffee._orders.append(self)
+        customer.order_list.append(self)
+        coffee.order_list.append(self)
         Order.all_orders.append(self)

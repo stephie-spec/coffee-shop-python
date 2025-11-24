@@ -3,18 +3,18 @@ class Customer:
     
     def __init__(self, name):
         self.name = name
-        self._orders = []
+        self.order_list = []
         Customer.all_customers.append(self)
     
-    def orders(self):
-        return self._orders
+    def get_orders(self):
+        return self.order_list
     
-    def coffees(self):
-        coffee_list = []
-        for order in self._orders:
-            if order.coffee not in coffee_list:
-                coffee_list.append(order.coffee)
-        return coffee_list
+    def get_coffees(self):
+        unique_coffees = []
+        for order in self.order_list:
+            if order.coffee not in unique_coffees:
+                unique_coffees.append(order.coffee)
+        return unique_coffees
     
     def create_order(self, coffee, price):
         order = Order(self, coffee, price)
@@ -22,7 +22,7 @@ class Customer:
     
     @classmethod
     def most_aficionado(cls, coffee):
-        if not coffee.orders():
+        if not coffee.get_orders():
             return None
         
         best_customer = None
@@ -30,7 +30,7 @@ class Customer:
         
         for customer in cls.all_customers:
             total = 0
-            for order in customer.orders():
+            for order in customer.get_orders():
                 if order.coffee == coffee:
                     total += order.price
             

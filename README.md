@@ -49,7 +49,7 @@ Mary's Orders:
   - Espresso: Ksh 450
 
 Joe's Orders:
-  - Cappuccino: kSH 450
+  - Cappuccino: Ksh 450
   - Latte: Ksh 400
 
 COFFEE INFO:

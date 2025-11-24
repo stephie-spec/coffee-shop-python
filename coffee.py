@@ -3,28 +3,28 @@ class Coffee:
     
     def __init__(self, name):
         self.name = name
-        self._orders = []
+        self.order_list = []
         Coffee.all_coffees.append(self)
     
-    def orders(self):
-        return self._orders
+    def get_orders(self):
+        return self.order_list
     
-    def customers(self):
-        customer_list = []
-        for order in self._orders:
-            if order.customer not in customer_list:
-                customer_list.append(order.customer)
-        return customer_list
+    def get_customers(self):
+        unique_customers = []
+        for order in self.order_list:
+            if order.customer not in unique_customers:
+                unique_customers.append(order.customer)
+        return unique_customers
     
     def num_orders(self):
-        return len(self._orders)
+        return len(self.order_list)
     
     def average_price(self):
-        if not self._orders:
+        if not self.order_list:
             return 0
         
         total = 0
-        for order in self._orders:
+        for order in self.order_list:
             total += order.price
         
-        return total / len(self._orders)
+        return total / len(self.order_list)
