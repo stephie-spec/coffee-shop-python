@@ -3,15 +3,15 @@ class Customer:
     
     def __init__(self, name):
         self.name = name
-        self.order_list = []
+        self.orders = []
         Customer.all_customers.append(self)
     
     def get_orders(self):
-        return self.order_list
+        return self.orders
     
     def get_coffees(self):
         unique_coffees = []
-        for order in self.order_list:
+        for order in self.orders:
             if order.coffee not in unique_coffees:
                 unique_coffees.append(order.coffee)
         return unique_coffees

@@ -6,6 +6,6 @@ class Order:
         self.coffee = coffee
         self.price = price
         
-        customer.order_list.append(self)
-        coffee.order_list.append(self)
+        customer.orders.append(self)
+        coffee.orders.append(self)
         Order.all_orders.append(self)
