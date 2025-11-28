@@ -4,6 +4,7 @@ from order import Order
 
 def main():
     print("COFFEE SHOP ORDERS")
+    
     # Create customers
     mary = Customer("Mary")
     joe = Customer("Joe")
@@ -17,36 +18,31 @@ def main():
     # Create orders
     Order(mary, latte, 4.0)
     Order(mary, espresso, 3.5)
-    
     Order(joe, cappuccino, 5.0)
     Order(joe, latte, 4.0)
-    
     Order(sarah, cappuccino, 5.0)
     Order(sarah, cappuccino, 5.0)
     
-    # Display customer orders
     customers = [mary, joe, sarah]
     
     for customer in customers:
         print(f"{customer.name}'s Orders:")
-        for order in customer.orders:
+        for order in customer.get_orders():  
             print(f"  - {order.coffee.name}: ${order.price}")
     
-
     print("\nCOFFEE STATISTICS")
     coffees = [latte, espresso, cappuccino]
     for coffee in coffees:
         print(f"{coffee.name}:")
         print(f"  Orders: {coffee.num_orders()}")
         print(f"  Avg Price: ${coffee.average_price():.1f}")
-        print(f"  Customers: {len(coffee.customers())}")
+        print(f"  Customers: {len(coffee.get_customers())}")  
     
-
     print("\nMOST AFICIONADO")    
     for coffee in coffees:
         aficionado = Customer.most_aficionado(coffee)
         if aficionado:
-            total = sum(order.price for order in aficionado.orders 
+            total = sum(order.price for order in aficionado.get_orders()  
                        if order.coffee == coffee)
             print(f"{coffee.name}: {aficionado.name} (${total})")
 

@@ -2,11 +2,27 @@ class Coffee:
     all_coffees = []
     
     def __init__(self, name):
-        if not isinstance(name, str) or len(name) < 3:
-            raise Exception("Name must be string at least 3 characters")
-        self.name = name
-        self.orders = []
+        self.coffee_name = name
+        self.orders = [] 
         Coffee.all_coffees.append(self)
+    
+    @property
+    def name(self):
+        return self.coffee_name
+    
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str):
+            raise ValueError("Name must be a string")
+        if len(value) < 3:
+            raise ValueError("Name must be at least 3 characters long")
+        self.coffee_name = value
+    
+    def get_orders(self):
+        return self.orders
+    
+    def get_customers(self):
+        return list({order.customer for order in self.orders})
     
     def num_orders(self):
         return len(self.orders)
@@ -17,9 +33,6 @@ class Coffee:
         total = sum(order.price for order in self.orders)
         return total / len(self.orders)
     
-    def customers(self):
-        unique_customers = []
-        for order in self.orders:
-            if order.customer not in unique_customers:
-                unique_customers.append(order.customer)
-        return unique_customers
+    def add_order(self, order):
+        if order not in self.orders:
+            self.orders.append(order)
