@@ -35,9 +35,6 @@ class Customer:
     
     @classmethod
     def most_aficionado(cls, coffee):
-        if not coffee.get_orders():
-            return None
-        
         best_customer = None
         highest_spent = 0
         
